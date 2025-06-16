@@ -9,8 +9,8 @@ namespace DailyPlanner.Application.Interfaces.Repositories
     {
         Task<TaskItem?> GetByIdAsync(Guid id);
         Task<IEnumerable<TaskItem>> GetByUserIdAsync(Guid userId);
-        Task<TaskItem> AddAsync(TaskItem task);
-        Task<TaskItem> UpdateAsync(TaskItem task);
-        Task<TaskItem> DeleteAsync(Guid id);    
+        Task AddAsync(TaskItem task);
+        Task UpdateAsync(TaskItem task);
+        Task DeleteAsync(Guid id);    
     }
 }
