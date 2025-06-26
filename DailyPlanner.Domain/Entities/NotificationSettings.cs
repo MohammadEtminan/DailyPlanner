@@ -5,13 +5,14 @@
     /// </summary>
     public class NotificationSettings
     {
+        #region Properties
         public Guid Id { get; set; }
         public bool IsEmailNotificationEnabled { get; set; } = true;
-        public int MinutesBeforeTask { get; set; } = 15;
+        public int MinutesBeforeTask { get; set; } = 15;  // مقدار پیش‌فرض 15 دقیقه 
+        #endregion
 
-        #region Foreign Key To User (One-To-One relationship
+        #region Foreign Key To User (One-To-One relationship)
         public Guid UserId { get; set; }
-        // مقدار پیش‌فرض 15 دقیقه
         public User User { get; set; } = null!;
         #endregion
     }
