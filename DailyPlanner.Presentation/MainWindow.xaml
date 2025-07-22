@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DailyPlanner.Presentation"
+        xmlns:views="clr-namespace:DailyPlanner.Presentation.Views"
+        xmlns:vm="clr-namespace:DailyPlanner.Presentation.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Daily Planner" Height="600" Width="450"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <!-- تعریف می‌کنیم که هر ViewModel با کدام View نمایش داده شود -->
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RegisterViewModel}">
+            <views:RegisterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView/>
+        </DataTemplate>
+    </Window.Resources>
 
+    <Grid>
+        <!-- محتوای اصلی پنجره به ViewModel جاری متصل می‌شود -->
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

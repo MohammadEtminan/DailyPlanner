@@ -15,6 +15,7 @@ namespace DailyPlanner.Infrastructure.Persistence.Repositories
         public DbSet<User> Users { get; set; }
         public DbSet<TaskItem> TaskItems { get; set; }
         public DbSet<NotificationSettings> NotificationSettings { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,14 +63,14 @@ namespace DailyPlanner.Infrastructure.Persistence.Repositories
             notificationSettingsEntity.ToTable(tb => tb.HasCheckConstraint("CK_NotificationSettings_MinutesBeforeTask", "[MinutesBeforeTask] >= 0"));
 
             // --- Log Entity Configuration ---
-            //var logEntity = modelBuilder.Entity<Log>();
+            var logEntity = modelBuilder.Entity<Log>();
 
-            //logEntity.Property(l => l.Level)
-            //    .IsRequired()
-            //    .HasMaxLength(50);
+            logEntity.Property(l => l.Level)
+                .IsRequired()
+                .HasMaxLength(50);
 
-            //logEntity.Property(l => l.Message)
-            //    .IsRequired();
+            logEntity.Property(l => l.Message)
+                .IsRequired();
         }
     }
 }
